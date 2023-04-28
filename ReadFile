@@ -1,0 +1,31 @@
+we need to add packages for new project:
+---------------------------------------
+settings/project name/project interpreter/packages(Selenium,pytest,pytest-html,pytest-xdist,openpyxl,Allure-pytest(optional))
+
+before runing the class run on terminal this commend:
+------------------------------------------------------
+pip install webdriver-manager
+
+and also take a look on :
+-----------------------
+settings/tools/Terminal/All check boxes need to select
+
+to run the class use below commend:
+----------------------------------
+pytest -s -v path from content root (testCases/test_login.py)(running file path) and check the run environment terminal
+
+parallel excution:
+------------------
+pytest -s -v -n=2(how many methods we need to run give the number) testCases/test_login.py
+
+to generate the html report and browser selection:
+--------------------------------------------------
+pytest -v --html=Reports/report.html --self-contained-html  testCases/test_login.py --browser chrome
+pytest -v --html=Reports/report.html testCases/test_login.py --browser chrome
+
+ Grouping Tests(it will use for specific actions in the all class):
+ ----------------------------------------------------------------
+   pytest -v -m "sanity" --html=Reports/report.html testCases/ --browser chrome
+   pytest -v -m "sanity and regression" --html=Reports/report.html testCases/ --browser chrome
+   pytest -v -m "sanity or regression" --html=Reports/report.html testCases/ --browser chrome
+
