@@ -253,7 +253,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>Automation Report</h1>
-    <p>Report generated on 01-May-2023 at 14:17:38 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
+    <p>Report generated on 01-May-2023 at 14:30:59 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -275,8 +275,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <td>project Name</td>
         <td>nop commerce</td></tr></table>
     <h2>Summary</h2>
-    <p>2 tests ran in 33.25 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">2 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <p>2 tests ran in 28.75 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">1 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -287,23 +287,24 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <th class="sortable links" col="links">Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test_login.py::Test_001_Login::test_login</td>
+          <td class="col-duration">22.04</td>
+          <td class="col-links"><a class="url" href="http://www.example.com/" target="_blank">URL</a> </td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div><div><img src="1682931659012.png" alt="screenshot" style="width:304px;height:228px;"onclick="window.open(this.src)" align="right"/></div></div>
+            <div class="log">self = &lt;testCases.test_login.Test_001_Login object at 0x000001BFE22FB100&gt;<br/><br/>    @pytest.mark.sanity<br/>    @pytest.mark.regression<br/>    def test_login(self):<br/>        self.logger.info(&quot;********************* test_login verification ***********************&quot;)<br/>        # self.driver = setupdriver<br/>        self.driver.maximize_window()<br/>        self.driver.get(self.baseURL)<br/>        # to refresh the browser<br/>        self.driver.refresh()<br/>        self.driver.implicitly_wait(20)<br/>        self.lp = Login(self.driver)<br/>        self.lp.setuseremail(self.useremail)<br/>        self.lp.setPasswordName(self.password)<br/>        self.lp.clickLogin()<br/>        act_title = self.driver.title<br/>    <br/>        # if act_title==&quot;Dashboard / nopCommerce administration&quot;:<br/>        if act_title == &quot;Dashboard / administration&quot;:<br/>            self.lp.clickLogout()<br/>            self.driver.close()<br/>            assert True<br/>        else:<br/>            self.driver.save_screenshot(&quot;.\\Screenshots\\&quot; + &quot;test_login.png&quot;)<br/>            self.driver.close()<br/>&gt;           assert False<br/><span class="error">E           assert False</span><br/><br/>testCases\test_login.py:67: AssertionError<br/> ------------------------------Captured stdout call------------------------------ <br/>05/01/2023 02:30:41 PM - INFO - ********************* test_login verification ***********************
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     Test_001_Login:test_login.py:46 ********************* test_login verification ***********************<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test_login.py::Test_001_Login::test_homePageTitle</td>
-          <td class="col-duration">5.72</td>
+          <td class="col-duration">6.45</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>05/01/2023 02:17:07 PM - INFO - ********** homePageTitle vrification *****************
-<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     Test_001_Login:test_login.py:26 ********** homePageTitle vrification *****************<br/></div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">test_login.py::Test_001_Login::test_login</td>
-          <td class="col-duration">27.35</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>05/01/2023 02:17:15 PM - INFO - ********************* test_login verification ***********************
-<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     Test_001_Login:test_login.py:46 ********************* test_login verification ***********************<br/></div></td></tr></tbody></table></body></html>
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>05/01/2023 02:30:32 PM - INFO - ********** homePageTitle vrification *****************
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     Test_001_Login:test_login.py:26 ********** homePageTitle vrification *****************<br/></div></td></tr></tbody></table></body></html>
