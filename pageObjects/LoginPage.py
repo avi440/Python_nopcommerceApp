@@ -2,8 +2,12 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-class Login:
+from pageObjects.BaseUI import BaseUI
+
+
+class Login(BaseUI):
     def __init__(self,driver):
+        super().__init__(driver)
         self.driver = driver
 
 
@@ -18,19 +22,17 @@ class Login:
 
     def setuseremail(self,userName):
         time.sleep(2)
-        self.driver.find_element(By.ID, self.textbox_userName_id).clear()
-        self.driver.find_element(By.ID, self.textbox_userName_id).send_keys(userName)
+        self.sendKeysAction(self.element("id", self.textbox_userName_id), userName)
 
-        # self.driver.find_element("id",self.textbox_userName_id).clear()
-        # self.driver.find_element("id",self.textbox_userName_id).send_keys(userName)
 
     def setPasswordName(self,Password):
         time.sleep(2)
-        self.driver.find_element(By.ID,self.textbox_password_id).clear()
-        self.driver.find_element(By.ID,self.textbox_password_id).send_keys(Password)
+        self.sendKeysAction(self.element("id", self.textbox_password_id),Password)
+
 
     def clickLogin(self):
-        self.driver.find_element(By.XPATH,self.login_button_xpath).click()
+        self.clickAction(self.element("xpath", self.login_button_xpath))
+
 
     def clickLogout(self):
-        self.driver.find_element(By.LINK_TEXT,self.link_logout_linktext).click()
+        self.clickAction(self.element("lt", self.link_logout_linktext))
