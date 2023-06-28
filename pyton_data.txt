@@ -1,0 +1,232 @@
+https://demo.nopcommerce.com/  ---> 
+
+https://admin-demo.nopcommerce.com/
+
+
+bandrau@gmail.com
+
+
+Step 1:for python framework requitred packages:
+---------------------------------------
+Selenium,pytest,pytest-html,pytest-xdist,openpyxl,Allure-pytest(optional)
+ 
+
+Step 2:project structure :
+------------------
+project name
+  |
+  pageObjects(package)
+  |
+  testCases(package)
+  |
+  utilities(package)
+  |
+  TestData(folder)
+  |
+  Configurations(folder)
+  |
+  Logs(folder)
+  |
+  Screenshots(folder)
+  |
+  Reports(folder)
+  |
+  Run.bat
+  
+  
+Step 3: Automating Login Test Case :
+-----------------------------------
+3.1: Create LoginPage Object Class under "pageObjetts"
+3.2: Create LoginTest under "lestCases"
+3.3: Create conftestpy under "testCases"
+
+
+Step 4: capture screenshot on failures:
+---------------------------------------
+ 4.1. Update Login Test with Screenshot under "testCases' 
+ 
+Step 5: Read common values from ini:
+-------------------------------------- 
+ 5.1: Add "config.ini" file in 'Configurations' folder.
+ 5.2: Create "readPropertiespy"utility file under utilities package to read common data.
+ 5.3: Replace hard coded values in Login test case. 
+ 
+Step 6: Adding logs to test case :
+ ------------------------------------
+6.1: Add customLogger.py under utilities package.
+6.2: Add logs to Login test case. 
+
+Step 7: Run Tests on Desired Browser/Cross Browser/Parallel :
+---------------------------------------------------------------
+7.1: update contest.py with required Fixtures which will accept command line argument (browser). 
+7.2: Pass browser name as areument in command line 
+To Run tests on desired browser :
+To Run tests pytest -s -v pytest -s -v 
+pytest -s -v testCases/test_login.py --browser chrome 
+pytest -s -v  testCases/test_login.py --browser firefox
+
+
+To run the parallel :
+pytest -v -s -n=2 testCases/test_login.py
+
+Step 8: Generate pytest HTML Reports:
+------------------------------------ 
+8.1: Update conftest.py with pytest hooks 
+8.2: To Generate HTML report run below command: 
+pytest -s -v -n-3 --html=Reports/report.html testCases/test_login.py --browser chrome 
+
+Step 9: Automating Data Driven Test Case :
+------------------------------------------
+9.1: Prepare test data in Excel sheet, place the excel file inside the TestData folder.
+9.2: Create "ExcelUtils.py' utility class under utilities package. 
+9.3: Create LoginDataDrivenTest under testCases 
+9.4: Run the test case 
+
+Step 10: Adding new testcases :
+-------------------------------
+1) Add new customer 
+2) Search customer by email 
+3) Search customer by name
+
+Step 11: Grouping Tests:
+-------------------------
+ 11.1'. Grouping markers( Add markers to every test method)
+  @pytest.mark.sanity 
+  @pytest.mork.regression 
+11.2: Add Marker entries in pytest.ini file
+   pytest.ini 
+   
+   [pytest]
+   markers=
+   sanity
+   regression
+   
+   pytest -v -m "sanity" --html=Reports/report.html testCases/ --browser chrome
+   pytest -v -m "sanity and regression" --html=Reports/report.html testCases/ --browser chrome
+   pytest -v -m "sanity or regression" --html=Reports/report.html testCases/ --browser chrome
+   pytest -v -m "regression" --html=Reports/report.html testCases/ --browser chrome
+   
+step12: run.bat fill running process:
+------------------------------------
+12.1 : create .bat file on project loocation 
+
+keep the commands in that file :   rem ---> is nothin but a comment the line 
+   rem pytest -v -m "sanity" --html=Reports/report.html testCases/ --browser chrome
+   rem pytest -v -m "sanity and regression" --html=Reports/report.html testCases/ --browser chrome
+   rem pytest -v -m "sanity or regression" --html=Reports/report.html testCases/ --browser chrome
+   pytest -v -m "regression" --html=Reports/report.html testCases/ --browser chrome
+   
+12.2:to rning the .bat file (double click in the file it wiil start the process)
+   
+   
+
+   pytest -v --html=Reports/report.html testCases/test_AddCustome.py --browser chrome
+   
+
+git.exe --> in global tool configuration --in git section
+
+
+pytest -s -v --html=Reports/report.html testCases/test_login.py
+
+
+
+
+
+
+
+
+
+
+
+
+Admin email: admin@yourstore.com
+Admin password: admin
+
+
+pip install webdriver-manager  ---> run on the terminal before starting project 
+
+ID = "id"
+    XPATH = "xpath"
+    LINK_TEXT = "link text"
+    PARTIAL_LINK_TEXT = "partial link text"
+    NAME = "name"
+    TAG_NAME = "tag name"
+    CLASS_NAME = "class name"
+    CSS_SELECTOR = "css selector"
+	
+	
+	# @pytest.hookimpl(hookwrapper=True)
+# def pytest_runtest_makereport(item, call):
+#     pytest_html = item.config.pluginmanager.getplugin('html')
+#     outcome = yield
+#     report = outcome.get_result()
+#     extra = getattr(report, 'extra', [])
+#
+#     if report.when == 'call' or report.when == "setup":
+#         xfail = hasattr(report, 'wasxfail')
+#         if (report.skipped and xfail) or (report.failed and not xfail):
+#             file_name = report.nodeid.replace("::", "_") + ".png"
+#             _capture_screenshot(file_name)
+#             if file_name:
+#                 html = '<div><img src="%s" alt="screenshot" style="width:304px;height:228px;" ' \
+#                        'onclick="window.open(this.src)" align="right"/></div>' % file_name
+#                 extra.append(pytest_html.extras.html(html))
+#             report.extra = extra
+#
+# def _capture_screenshot(name):
+#     driver.get_screenshort_as_file(name)
+#
+# def pytest_html_report_title(report):
+#     report.title = "Automation Report"
+
+# @pytest.mark.hookwrapper
+# def pytest_runtest_makereport(item, call):
+#
+#     timestamp = datetime.now().strftime('%H-%M-%S')
+#
+#     pytest_html = item.config.pluginmanager.getplugin('html')
+#     outcome = yield
+#     report = outcome.get_result()
+#     extra = getattr(report, 'extra', [])
+#     if report.when == 'call':
+#
+#         feature_request = item.funcargs['request']
+#
+#         driver = feature_request.getfuncargvalue('browser')
+#         driver.save_screenshot(".\\Screenshots\\"+timestamp+'.png')
+#
+#         extra.append(pytest_html.extras.image(".\\Screenshots\\"+timestamp+'.png'))
+#
+#         # always add url to report
+#         extra.append(pytest_html.extras.url('http://www.example.com/'))
+#         xfail = hasattr(report, 'wasxfail')
+#         if (report.skipped and xfail) or (report.failed and not xfail):
+#             # only add additional html on failure
+#             extra.append(pytest_html.extras.image(".\\Screenshots\\"+".png"))
+#             extra.append(pytest_html.extras.html('<div>Additional HTML</div>'))
+#         report.extra = extra
+# @pytest.mark.hookwrapper
+# def pytest_runtest_makereport(item):
+#     """
+#     Extends the PyTest Plugin to take and embed screenshot in html report, whenever test fails.
+#     :param item:
+#     """
+#     pytest_html = item.config.pluginmanager.getplugin('html')
+#     outcome = yield
+#     report = outcome.get_result()
+#     extra = getattr(report, 'extra', [])
+#
+#     if report.when == 'call' or report.when == "setup":
+#         xfail = hasattr(report, 'wasxfail')
+#         if (report.skipped and xfail) or (report.failed and not xfail):
+#             file_name = report.nodeid.replace("::", "_") + ".png"
+#             _capture_screenshot(file_name)
+#             if file_name:
+#                 html = '<div><img src="%s" alt="screenshot" style="width:304px;height:228px;" ' \
+#                        'onclick="window.open(this.src)" align="right"/></div>' % file_name
+#                 extra.append(pytest_html.extras.html(html))
+#         report.extra = extra
+#
+#
+# def _capture_screenshot(name):
+#     driver.get_screenshot_as_file(name)
